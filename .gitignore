@@ -1,0 +1,21 @@
+# Node.js dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+*.log
+
+# Build outputs
+dist/
+build/
+
+# OS-specific files
+.DS_Store
+
+# Coverage directory
+coverage/
+
+# Editor configurations
+.vscode/

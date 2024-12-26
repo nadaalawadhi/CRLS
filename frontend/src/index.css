@@ -1,0 +1,2745 @@
+/* .pages{
+  min-height: 500px;
+} */
+/* Make sure the entire layout takes full height */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure full viewport height */
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  flex: 1; /* Allow layout to grow and take available space */
+}
+
+.content {
+  flex: 1; /* Push the footer to the bottom if the content is short */
+  /* padding: 20px 0px;   */
+}
+
+header {
+  background-color: #0b2b26;
+  color: #ecf0f1;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+
+
+
+
+
+
+/* html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+} */
+
+/* General styles for the header and container */
+/* header {
+  background-color: #0b2b26;
+  color: #ecf0f1;
+  padding: 15px 0;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+} */
+/* header {
+  background-color: #0b2b26;
+  color: #ecf0f1;
+  padding: 15px 0;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+header.sticky {
+  padding: 0px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; 
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  /* animation: slideDown 0.3s ease;   
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+} */
+
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px 20px;
+}
+
+/* Logo and main title */
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #ecf0f1;
+  font-family: 'Arial', sans-serif;
+}
+
+header a {
+  text-decoration: none;
+}
+
+/* Navigation menu */
+header nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+header nav ul li {
+  font-size: 1.2rem;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #ecf0f1;
+  transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+  color: #16a085; /* Light blue for hover effect */
+}
+
+/* Special styling for Logout link */
+header nav ul li .logout:hover {
+  color: #e74c3c; /* Red for hover effect */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  header .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+/* General footer styles */
+ footer {
+  /* background-color: #051f20; */
+  color: #ecf0f1; /* Light gray text */
+  padding: 20px 0;
+  margin-top: 20px;
+  background-color: #0b2b26; 
+  text-align: center; 
+}
+
+footer div {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Links in the footer */
+footer div a {
+  color: #ecf0f1;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+footer div a:hover {
+  color: #16a085; /* Light blue for hover effect */
+}
+
+/* Footer copyright text */
+footer div p {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #bdc3c7; /* Slightly lighter gray for less emphasis */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  footer div a {
+    display: block;
+    margin: 10px 0;
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+/* General Card Styling */
+.car-card,
+.car-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 0px 15px 0px;
+  background-color: #ffffff; /* White background */
+  border: 1px solid #bdc3c7; /* Light gray border */
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  cursor: pointer; /* Indicates the card is clickable */
+}
+
+.car-card:hover,
+.car-details-container:hover {
+  transform: translateY(-5px); /* Lift effect */
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+}
+
+/* Car Image Styling */
+.car-image {
+  width: 100%;
+  /* max-width: 250px; */
+  height: auto;
+  border-radius: 5px 5px 0px 0px;
+  margin-bottom: 15px;
+}
+
+/* Car Details Text Styling */
+.car-details-container h4 {
+  margin: 10px 0 5px;
+  font-size: 1.3rem;
+  /* color: #000000; /*test black*/
+  color: #ffffff;
+}
+
+.car-details-container p {
+  margin: 5px 0;
+  font-size: 1rem;
+  /* color: #4e6756; */
+  color: #ffffff;
+  text-align: left;
+}
+
+/* Delete Button Styling */
+.car-details-container span {
+  margin-top: 10px;
+  color: #e74c3c; /* Red for delete */
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.car-details-container span:hover {
+  color: #c0392b; /* Darker red */
+}
+
+/* Popup Overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Popup Content */
+.popup-content {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  width: 400px;
+  max-width: 90%;
+  max-height: 80vh; /* Limit height */
+  overflow-y: auto; /* Scrollable content */
+}
+
+/* Form Container */
+.car-form-container {
+  padding: 15px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.car-form-container h2 {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #000000; /*test black*/
+  margin-bottom: 15px;
+}
+
+/* Form Fields */
+.car-form-container form div {
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.car-form-container form label {
+  margin-bottom: 3px;
+  font-size: 0.9rem;
+  color: #4e6756;
+}
+
+.car-form-container form input,
+.car-form-container form select,
+.car-form-container form textarea {
+  padding: 8px;
+  font-size: 0.9rem;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.car-form-container form input:focus,
+.car-form-container form select:focus,
+.car-form-container form textarea:focus {
+  border-color: #16a085; /* Light blue focus */
+}
+
+/* Form Buttons */
+.car-form-container form button {
+  width: 100%;
+  padding: 8px;
+  font-size: 0.9rem;
+  background-color: #16a085;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.car-form-container form button:hover {
+  background-color: #13806b; /* Darker blue */
+}
+
+.car-form-container form button:disabled {
+  background-color: #95a5a6; /* Gray for disabled state */
+  cursor: not-allowed;
+}
+
+/* Image Preview */
+.car-form-container form img {
+  display: block;
+  max-width: 80px;
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
+.car-form-container form .availability-container {
+  display: flex !important;
+  flex-direction: row; /* Ensure horizontal alignment */
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-top: 5px;
+  margin-bottom: 0 !important;
+}
+
+.availability-container input[type="checkbox"] {
+  width: auto; /* Reset any width styles */
+  height: auto; /* Reset any height styles */
+  margin: 0; /* Remove any margin */
+  transform: scale(1.2); /* Optional: Adjust size for better visibility */
+  cursor: pointer; /* Ensure it looks interactive */
+}
+
+.availability-container span {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+}
+
+
+
+.color-picker {
+  width: 100%; /* Match the width of other input fields */
+  height: 40px; /* Ensure it’s visually prominent */
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Error Message */
+.error-message {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Page Layout */
+.car-page {
+  /* padding: 20px; */
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-search-bar{
+  background-color: #ffffff; /* White background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.admin-search-bar h2{
+  font-size: 1.8rem;
+  color: #000000; /*test black*/ /* Dark navy blue */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.admin-search-bar input{
+  margin-bottom: 20px;
+}
+
+.admin-search-bar button{
+  width: 80%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #bdc3c7; /* Light gray border */
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.add-car-button-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.cars {
+  /* display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px; */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.add-car-button {
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  background-color: #16a085;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-car-button:hover {
+  background-color: #13806b;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .car-details-container {
+    padding: 10px;
+  }
+
+  .car-details-container h4 {
+    font-size: 1rem;
+  }
+
+  .car-details-container p {
+    font-size: 0.9rem;
+  }
+
+  .car-form-container {
+    padding: 10px;
+  }
+
+  .car-form-container h2 {
+    font-size: 1rem;
+  }
+
+  .car-form-container form div {
+    margin-bottom: 8px;
+  }
+
+  .car-form-container form button {
+    padding: 6px;
+    font-size: 0.85rem;
+  }
+}
+
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+/* Main container for reservations page */
+.reservations-page {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff; /* White background */
+  border-radius: 10px;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Page heading */
+.reservations-page h1 {
+  font-size: 2rem;
+  color: #000000; 
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Table styling */
+.reservations-page table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.reservations-page th,
+.reservations-page td {
+  text-align: left;
+  padding: 12px 15px;
+  border: 1px solid #bdc3c7; /* Light gray border */
+  font-size: 1rem;
+}
+
+.reservations-page th {
+  background-color: #f4f6f9; /* Light gray background for headers */
+  color: #000000; /*test black*/ /* Dark navy blue text */
+  font-weight: bold;
+}
+
+.reservations-page td {
+  background-color: #ffffff; /* White background for cells */
+  color: #4e6756;  
+}
+
+.reservations-page tr:nth-child(even) td {
+  background-color: #f7f9fa; /* Slightly lighter gray for alternating rows */
+}
+
+.reservations-page tr:hover td {
+  background-color: #ecf0f1; /* Highlight row on hover */
+}
+
+/* Select dropdown for changing status */
+.reservations-page select {
+  padding: 8px 10px;
+  font-size: 1rem;
+  border: 1px solid #bdc3c7; /* Light gray border */
+  border-radius: 4px;
+  background-color: #ffffff; /* White background */
+  color: #000000; /*test black*/ /* Dark text for visibility */
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.reservations-page select:focus {
+  border-color: #16a085; /* Blue border on focus */
+  outline: none;
+}
+
+/* Disabled dropdown styling */
+.reservations-page select:disabled {
+  background-color: #f7f9fa; /* Light gray background */
+  color: #95a5a6; /* Subtle gray text for disabled state */
+  cursor: not-allowed;
+}
+
+/* Error and loading messages */
+.reservations-page .error-message,
+.reservations-page .loading-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #e74c3c; /* Red for errors */
+  margin: 20px 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .reservations-page table {
+    font-size: 0.9rem;
+  }
+
+  .reservations-page th,
+  .reservations-page td {
+    padding: 10px;
+  }
+
+  .reservations-page h1 {
+    font-size: 1.5rem;
+  }
+}
+
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+
+/* Main container for the login page */
+.login-page {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #ffffff; /* White background */
+  border-radius: 10px;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Page heading */
+.login-page h2 {
+  font-size: 1.8rem;
+  color: #000000; /*test black*/ /* Dark navy blue */
+  margin-bottom: 20px;
+}
+
+/* Error message styling */
+.login-page p {
+  color: #e74c3c; /* Red for errors */
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+/* Form styling */
+.login-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Input fields */
+.login-page form input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #bdc3c7; /* Light gray border */
+  border-radius: 5px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-page form input:focus {
+  border-color: #16a085; /* Light blue */
+  box-shadow: 0px 0px 6px rgba(52, 152, 219, 0.4);
+}
+
+/* Forgot password link */
+.login-page form a {
+  font-size: 0.9rem;
+  color: #16a085; /* Light blue */
+  text-decoration: none;
+  transition: color 0.3s ease;
+  text-align: left;
+}
+
+.login-page form a:hover {
+  color: #13806b; /* Darker blue on hover */
+}
+
+/* Submit button */
+.login-page form button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  background-color: #16a085; /* Light blue */
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-page form button:hover {
+  background-color: #13806b; /* Darker blue on hover */
+  transform: scale(1.02);
+}
+
+/* Link to login */
+.login-page form p {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #000000; /*test black*/ /* Dark navy blue */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .login-page {
+    margin: 30px auto;
+    padding: 20px;
+  }
+
+  .login-page h2 {
+    font-size: 1.5rem;
+  }
+
+  .login-page form button {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+/* Main container for the register page */
+.register-page {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #ffffff; /* White background */
+  border-radius: 10px;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Page heading */
+.register-page h2 {
+  font-size: 2rem;
+  color: #000000; /*test black*/ /* Dark navy blue */
+  margin-bottom: 20px;
+}
+
+/* Success and error messages */
+.register-page p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.register-page p[style*='color: red'] {
+  color: #e74c3c; /* Red for errors */
+}
+
+.register-page p[style*='color: green'] {
+  color: #27ae60; /* Green for success */
+}
+
+/* Form styling */
+.register-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Input fields */
+.register-page form input {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #bdc3c7; /* Light gray border */
+  border-radius: 5px;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.register-page form input:focus {
+  border-color: #16a085; /* Light blue */
+  box-shadow: 0px 0px 6px rgba(52, 152, 219, 0.4);
+}
+
+/* Submit button */
+.register-page form button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  background-color: #16a085; /* Light blue */
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.register-page form button:hover {
+  background-color: #13806b; /* Darker blue on hover */
+  transform: scale(1.02);
+}
+
+/* Link to login */
+.register-page form p {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #000000; /*test black*/ /* Dark navy blue */
+}
+
+.register-page form a {
+  color: #16a085; /* Light blue */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.register-page form a:hover {
+  color: #13806b; /* Darker blue on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .register-page {
+    margin: 30px auto;
+    padding: 20px;
+  }
+
+  .register-page h2 {
+    font-size: 1.5rem;
+  }
+
+  .register-page form input {
+    padding: 10px;
+  }
+
+  .register-page form button {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+/* Main container for the search bar */
+.search-bar {
+  background-color: #ffffff; /* White background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+/* Title styling */
+.search-bar h2 {
+  font-size: 1.8rem;
+  color: #000000; /*test black*/ /* Dark navy blue */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Search input row */
+.search-input {
+  margin-bottom: 20px;
+}
+
+.search-input input {
+  width: 98%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #bdc3c7; /* Light gray border */
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-input input:focus {
+  border-color: #16a085; /* Light blue */
+  box-shadow: 0px 0px 6px rgba(52, 152, 219, 0.4);
+} 
+
+/* Dropdowns for brands and categories */
+.filters select {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #bdc3c7; /* Light gray border */
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.filters select:focus {
+  border-color: #16a085; /* Light blue */
+  box-shadow: 0px 0px 6px rgba(52, 152, 219, 0.4);
+}
+
+/* Price range slider */
+.filters .MuiSlider-root {
+  width: 97%;
+  margin-left: 10px;
+  color: #16a085; /* Light blue */
+}
+
+/* Rental period styling */
+.filters label {
+  display: block;
+  font-size: 1rem;
+  color: #000000; /*test black*/ /* Dark navy blue */
+  margin-bottom: 5px;
+}
+
+.filters .react-datepicker-wrapper {
+  width: 100%;
+}
+
+.filters .react-datepicker__input-container input {
+  width: 92%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #bdc3c7; /* Light gray border */
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.filters .react-datepicker__input-container input:focus {
+  border-color: #16a085; /* Light blue */
+  box-shadow: 0px 0px 6px rgba(52, 152, 219, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .search-bar h2 {
+    font-size: 1.5rem;
+  }
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns layout */
+  grid-gap: 30px; /* Spacing between rows and columns */
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .filters {
+    grid-template-columns: 1fr; /* Single column for small screens */
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+/* Main container for the BookCar page */
+.book-a-car-page {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Car listings section */
+.car-listings {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Loading message */
+.book-a-car-page p {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #7f8c8d;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+/* Car details card */
+.car-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 0px 15px 0px;
+  background-color: #ffffff; /* White background */
+  border: 1px solid #bdc3c7; /* Light gray border */
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  cursor: pointer; /* Indicates the card is clickable */
+}
+
+.car-details:hover {
+  transform: translateY(-5px); /* Lift effect */
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+}
+
+/* Car image */
+.car-details img {
+  width: 100%;
+  /* max-width: 250px; */
+  height: auto;
+  border-radius: 5px 5px 0px 0px;
+  margin-bottom: 15px;
+}
+
+/* Car title */
+.car-details h3 {
+  margin: 10px 0 5px;
+  font-size: 1.3rem;
+  /* color: #000000; /*test black*/
+  color: #ffffff;
+
+}
+
+/* Car details text */
+.car-details p {
+  margin: 5px 0;
+  font-size: 1rem;
+  /* color: #4e6756; */
+  color: #ffffff;
+  text-align: left;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+/* Modal overlay */
+.car-modal .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Modal content */
+.car-modal .modal-content {
+  background-color: #f9f9f9 !important;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Close button */
+.car-modal .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #7f8c8d; /* Gray */
+  transition: color 0.3s ease;
+}
+
+.car-modal .close-btn:hover {
+  color: #e74c3c; /* Red on hover */
+}
+
+.modal-car-details img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.modal-car-details h3 {
+  font-size: 1.5rem;
+  color: #0b2b26; 
+  margin-bottom: 10px;
+}
+
+.modal-car-details p {
+  font-size: 1rem;
+  color: #051f20 !important;
+  margin: 5px 0;
+  text-align: left;
+}
+
+/* Book now button */
+.book-now-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #0b2b26;  
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.book-now-btn:hover {
+  background-color: #145e4a; 
+  color: #ffffff; /* Keep text white */
+  transform: scale(1.02); /* Slight zoom */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+/* Main container for the reservations page */
+.my-reservations-page {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9fafc; /* Subtle gray background */
+  border-radius: 12px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+/* Page title */
+.my-reservations-page h2 {
+  font-size: 2rem;
+  color: #000000;  
+  text-align: center;
+  margin-bottom: 30px;
+} 
+
+/* Reservation card styling */
+.reservation-card {
+  display: flex; /* Align image and text side-by-side */
+  align-items: flex-start; /* Align items to the top */
+  padding: 20px;
+  background-color: #ffffff; /* White background */
+  border: 1px solid #e1e4e8; /* Subtle gray border */
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reservation-card:hover {
+  transform: translateY(-5px); /* Lift effect */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+}
+
+/* Reservation car image */
+.reservation-card img {
+  flex-shrink: 0;
+  width: 150px;
+  height: 100px;
+  object-fit: cover; /* Ensures image scales without distortion */
+  border-radius: 8px; /* Rounded corners for the image */
+  margin-right: 20px; /* Space between image and details */
+}
+
+/* Text container for reservation details */
+.reservation-details {
+  display: flex;
+  flex-direction: column; /* Stack text elements vertically */
+  justify-content: flex-start; /* Align items to the top */
+}
+
+/* Reservation heading */
+.reservation-details h3 {
+  font-size: 1.5rem;
+  color: #0b2b26; /* Deep navy blue */
+  margin: 0 0 10px 0; /* Add spacing below the heading */
+  font-weight: bold;
+}
+
+/* Reservation paragraph text */
+.reservation-details p {
+  font-size: 1rem;
+  color: #4e6756;  
+  margin: 5px 0; /* Space between paragraphs */
+  line-height: 1.6; /* Improve text readability */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .my-reservations-page {
+    padding: 15px;
+  }
+
+  .my-reservations-page h2 {
+    font-size: 1.6rem;
+  }
+
+  .reservation-card {
+    padding: 15px;
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+/* Modal overlay */
+.reservation-modal .modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out; /* Smooth fade-in animation */
+}
+
+/* Modal container */
+.reservation-modal .modal-container {
+  background-color: #ffffff; /* White background */
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 600px; /* Adjust width if needed */
+  width: 90%;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1001; /* Ensure modal content is above overlay */
+}
+
+
+.reservation-modal .modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.reservation-modal .modal-header h3 {
+  font-size: 1.6rem;
+  color: #0b2b26; 
+  margin: 0;
+}
+
+.reservation-modal .close-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #7f8c8d; /* Gray */
+  transition: color 0.3s ease;
+}
+
+.reservation-modal .close-btn:hover {
+  color: #e74c3c; /* Red on hover */
+}
+
+.reservation-modal .car-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.reservation-modal .car-section img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reservation-modal .info-sections {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.reservation-modal .details-section {
+  flex: 1; /* Equal width for both sections */
+}
+
+.reservation-modal .details-section h4 {
+  font-size: 1.3rem;
+  color: #0b2b26; 
+  margin-bottom: 10px;
+  border-bottom: 1px solid #e1e4e8;
+  padding-bottom: 5px;
+  text-align: left;
+
+}
+
+.reservation-modal .details-section p {
+  font-size: 1rem;
+  color: #4e6756;  
+  margin: 5px 0;
+  text-align: left;
+}
+
+.reservation-modal .button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.reservation-modal .cancel-btn {
+  margin-top: 10px;
+  padding: 12px 18px;
+  background-color: #e74c3c; /* Red */
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.reservation-modal .cancel-btn:hover {
+  background-color: #c0392b; /* Darker red */
+  transform: scale(1.03);
+}
+
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+/* Main container for the profile page */
+.profile-page {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff; /* White background */
+  border-radius: 10px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  font-family: 'Arial', sans-serif;
+}
+
+/* Page title */
+.profile-page h1 {
+  font-size: 2rem;
+  color: #000000; /*test black*/ /* Dark navy blue */
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Section headings */
+.profile-page section h2 {
+  font-size: 1.5rem;
+  color: #4e6756;  
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ecf0f1;
+  padding-bottom: 10px;
+}
+
+/* Error message styling */
+.profile-page .error {
+  color: #e74c3c; /* Red for errors */
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Form styles */
+.profile-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Form labels */
+.profile-page form label {
+  font-size: 1rem;
+  color: #000000; /*test black*/ /* Dark navy blue */
+  margin-bottom: 5px;
+}
+
+/* Input fields */
+.profile-page form input {
+  width: 98%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #bdc3c7; /* Light gray border */
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-page form input:focus {
+  border-color: #16a085; /* Light blue focus */
+  box-shadow: 0px 0px 6px rgba(52, 152, 219, 0.4);
+}
+
+/* Save changes button (same width as inputs) */
+.profile-page form button {
+  width: 98%; /* Matches input width */
+  padding: 12px;
+  font-size: 1rem;
+  background-color: #16a085; /* Light blue */
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.profile-page form button:hover {
+  background-color: #13806b; /* Darker blue */
+  transform: scale(1.02);
+}
+
+/* Change Password button (same width as inputs) */
+.profile-page section button {
+  width: 100%; /* Matches input width */
+  margin-top: 30px;
+  padding: 12px;
+  font-size: 1rem;
+  background-color: #16a085; /* Red */
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.profile-page section button:hover {
+  background-color: #13806b; /* Darker red */
+  transform: scale(1.02);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .profile-page {
+    padding: 15px;
+  }
+
+  .profile-page h1 {
+    font-size: 1.8rem;
+  }
+
+  .profile-page form input {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  .profile-page form button,
+  .profile-page section button {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+/* Main container for the change password page */
+.change-password-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff; /* White background */
+  border-radius: 10px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  font-family: 'Arial', sans-serif;
+}
+
+/* Page heading */
+.change-password-container h2 {
+  font-size: 1.8rem;
+  color: #000000; /*test black*/ /* Dark navy blue */
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Error and success messages */
+.change-password-container .error-message {
+  color: #e74c3c; /* Red for errors */
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.change-password-container .success-message {
+  color: #27ae60; /* Green for success */
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Form styling */
+.change-password-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Labels for input fields */
+.change-password-container form label {
+  font-size: 1rem;
+  color: #000000; /*test black*/ /* Dark navy blue */
+  margin-bottom: 5px;
+}
+
+/* Input fields */
+.change-password-container form input {
+  width: 98%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #bdc3c7; /* Light gray border */
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.change-password-container form input:focus {
+  border-color: #16a085; /* Light blue focus */
+  box-shadow: 0px 0px 6px rgba(52, 152, 219, 0.4);
+}
+
+/* Submit button */
+.change-password-container form button {
+  width: 98%; /* Matches input field width */
+  padding: 12px;
+  font-size: 1rem;
+  background-color: #16a085; /* Light blue */
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.change-password-container form button:hover {
+  background-color: #13806b; /* Darker blue */
+  transform: scale(1.02);
+}
+
+.change-password-container form button:disabled {
+  background-color: #95a5a6; /* Gray for disabled state */
+  cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .change-password-container {
+    padding: 15px;
+  }
+
+  .change-password-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .change-password-container form input {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  .change-password-container form button {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+/* Main container for the forgot password page */
+.forgot-password-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff; /* White background */
+  border-radius: 10px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  font-family: 'Arial', sans-serif;
+}
+
+/* Page heading */
+.forgot-password-container h2 {
+  font-size: 1.8rem;
+  color: #000000; /*test black*/ /* Dark navy blue */
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Success and error messages */
+.forgot-password-container .success-message {
+  color: #27ae60; /* Green for success */
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.forgot-password-container .error-message {
+  color: #e74c3c; /* Red for errors */
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Form styling */
+.forgot-password-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Labels for input fields */
+.forgot-password-container form label {
+  font-size: 1rem;
+  color: #000000; /*test black*/ /* Dark navy blue */
+  margin-bottom: 5px;
+}
+
+/* Input fields */
+.forgot-password-container form input {
+  width: 98%; /* Matches other input fields */
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #bdc3c7; /* Light gray border */
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.forgot-password-container form input:focus {
+  border-color: #16a085; /* Light blue focus */
+  box-shadow: 0px 0px 6px rgba(52, 152, 219, 0.4);
+}
+
+/* Submit button */
+.forgot-password-container form button {
+  width: 98%; /* Matches input field width */
+  padding: 12px;
+  font-size: 1rem;
+  background-color: #16a085; /* Light blue */
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.forgot-password-container form button:hover {
+  background-color: #13806b; /* Darker blue */
+  transform: scale(1.02);
+}
+
+.forgot-password-container form button:disabled {
+  background-color: #95a5a6; /* Gray for disabled state */
+  cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .forgot-password-container {
+    padding: 15px;
+  }
+
+  .forgot-password-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .forgot-password-container form input {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  .forgot-password-container form button {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+/* Main container for the reset password page */
+.reset-password-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff; /* White background */
+  border-radius: 10px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  font-family: 'Arial', sans-serif;
+}
+
+/* Page heading */
+.reset-password-container h2 {
+  font-size: 1.8rem;
+  color: #000000; /*test black*/ /* Dark navy blue */
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Success and error messages */
+.reset-password-container .success {
+  color: #27ae60; /* Green for success */
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.reset-password-container .error {
+  color: #e74c3c; /* Red for errors */
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Form styling */
+.reset-password-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Labels for input fields */
+.reset-password-container form label {
+  font-size: 1rem;
+  color: #000000; /*test black*/ /* Dark navy blue */
+  margin-bottom: 5px;
+}
+
+/* Input fields */
+.reset-password-container form input {
+  width: 96%; /* Matches other input fields */
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #bdc3c7; /* Light gray border */
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reset-password-container form input:focus {
+  border-color: #16a085; /* Light blue focus */
+  box-shadow: 0px 0px 6px rgba(52, 152, 219, 0.4);
+}
+
+/* Submit button */
+.reset-password-container form button {
+  width: 100%; /* Matches input field width */
+  padding: 12px;
+  font-size: 1rem;
+  background-color: #16a085; /* Light blue */
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.reset-password-container form button:hover {
+  background-color: #13806b; /* Darker blue */
+  transform: scale(1.02);
+}
+
+.reset-password-container form button:disabled {
+  background-color: #95a5a6; /* Gray for disabled state */
+  cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .reset-password-container {
+    padding: 15px;
+  }
+
+  .reset-password-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .reset-password-container form input {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  .reset-password-container form button {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+/* Customer Dashboard container */
+.customer-dashboard {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* Header */
+.customer-dashboard h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+/* Summary Panel */
+.customer-dashboard .summary-panel {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Reservation Row */
+.customer-dashboard .reservation-row {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.customer-dashboard .reservation-row h3 {
+  font-size: 1.4rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.customer-dashboard .reservation-row table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.customer-dashboard .reservation-row th, .customer-dashboard .reservation-row td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.customer-dashboard .reservation-row th {
+  background-color: #f2f2f2;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.customer-dashboard .reservation-row td {
+  font-size: 0.9rem;
+}
+
+.customer-dashboard .reservation-row tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Status Change Dropdown */
+.customer-dashboard .status-select {
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.customer-dashboard .status-select:disabled {
+  background-color: #e1e1e1;
+  cursor: not-allowed;
+}
+
+/* Button Styling */
+.customer-dashboard button {
+  background-color: #ff4e4e;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.customer-dashboard button:hover {
+  background-color: #e74c3c;
+}
+
+/* Loading and Error Handling */
+.customer-dashboard .loading, .customer-dashboard .error {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #ff4e4e;
+  margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .customer-dashboard .summary-panel {
+    padding: 15px;
+  }
+
+  .customer-dashboard .reservation-row {
+    padding: 15px;
+  }
+
+  .customer-dashboard .reservation-row table {
+    font-size: 0.9rem;
+  }
+
+  .customer-dashboard .reservation-row th, .customer-dashboard .reservation-row td {
+    padding: 8px;
+  }
+
+  .customer-dashboard button {
+    width: 100%;
+    font-size: 1.1rem;
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+/* Admin Dashboard Layout */
+.admin-dashboard {
+  padding: 30px;
+  background-color: #f5f5f5;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* Header Styling */
+.admin-dashboard h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.stats-overview {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box; /* Ensure padding is inside the element */
+}
+
+.stats-overview div {
+  flex: 1;
+  text-align: center;
+}
+
+.stats-overview div h4 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.stats-overview div p {
+  margin: 0;
+  font-size: 24px;
+}
+
+.stats-box {
+  background-color: #fff;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.stats-box div:first-child {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.stats-box div:last-child {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Chart Wrapper */
+.charts-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+}
+
+.chart-container {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container h3 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.chart-container canvas {
+  width: 100% !important;
+  height: 300px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .stats-overview {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .charts-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+/* Basic Styles */
+.landing-page {
+  font-family: Arial, sans-serif;
+  color: #333;
+  /* text-align: center; */
+}
+
+.hero {
+  background: #000000; /* Fallback color in case the image doesn't load */
+  background-image: url("../../backend/uploads/LP.jpg");
+  background-size:cover ; /* Ensures the image covers the entire element */
+  background-position: center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+  color: white;
+  /* padding: 200px 0;   */
+
+  text-align: center; /* Moves all text to the left */
+  padding: 220px 700px 250px 0px;
+}
+
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+}
+
+.cta-btn {
+  background: #16a085;
+  /* background: #0b2b26; */
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 5px;
+
+}
+
+.about-us {
+  text-align: left;
+  padding: 150px 50px;
+  padding: 40px 10px 200px 10px;
+  background: #f9f9f9;
+}
+
+.about-us h2 {
+  font-size: 2rem;
+  margin-bottom: 50px;
+}
+
+.about-us p {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.6;
+  padding: 0px 50px;
+}
+
+.testimonials {
+  text-align: center;
+  padding: 60px 20px 90px 20px;
+  /* padding: 120px 20px; */
+  background: #fff;
+}
+
+.testimonials h2{
+  margin-bottom: 130px;
+}
+
+.testimonial-card {
+  width: 90%;
+  max-width: 300px; /* Fixed size for uniform cards */
+  height: 220px; /* Fixed height for uniform cards */
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #f4f4f4;
+  margin: 0 auto; /* Center cards */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px; /* Space between text and author */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-card p {
+  font-size: 1rem;
+  color: #333;
+  text-align: justify; /* Makes longer text easier to read */
+}
+
+.testimonial-card h4 {
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #777;
+  text-align: right; /* Align the author to the right */
+}
+
+.slick-slide {
+  margin-bottom: 90px;
+}
+
+button.slick-arrow.slick-next{
+  margin-right: 10px; 
+}
+
+button.slick-arrow.slick-prev{
+  margin-left: 10px;
+}
+
+.slick-prev:before, .slick-next:before{
+  color: grey !important;
+}
+
+.redirect-info {
+  color: #16a085;
+  padding: 0px;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+/* Main container for the booking page */
+.booking-page {
+  max-width: 800px;
+  margin: 40px auto;
+  background-color: #ffffff; /* White background */
+  border-radius: 12px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  font-family: 'Arial', sans-serif;
+}
+
+/* Step Title Styling */
+.booking-page h2 {
+  font-size: 1.8rem;
+  color: #0b2b26; /*test black*/ /* Dark navy blue */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Form Container Styling */
+.booking-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+}
+
+/* Label Styling */
+.booking-page form label {
+  font-size: 1rem;
+  color: #4e6756; 
+  margin-bottom: 5px;
+}
+
+/* Input and Select Fields */
+.booking-page form input,
+.booking-page form select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #bdc3c7; /* Light gray border */
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.booking-page form input:focus,
+.booking-page form select:focus {
+  border-color: #16a085; /* Light blue focus */
+  box-shadow: 0px 0px 6px rgba(52, 152, 219, 0.4);
+}
+
+/* DatePicker Fields Container */
+.booking-page form div {
+  /* display: flex; */
+  flex-direction: column;
+  gap: 10px;
+}
+
+.booking-page form div button {
+  /* all: unset; */
+  margin-right: 10px;
+  padding: 0;
+  font-size: inherit;
+  background-color: transparent;
+  color: inherit;
+  border: none;
+  border-radius: 0;
+  cursor: default;
+  font-weight: normal;
+  transition: none;
+}
+
+.booking-page form div button:hover { 
+  background-color: transparent; 
+}
+
+
+/* DatePicker Inputs Styling */
+.react-datepicker-wrapper input {
+  width: 97% !important;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.react-datepicker-wrapper input:focus {
+  border-color: #16a085;
+  box-shadow: 0px 0px 6px rgba(52, 152, 219, 0.4);
+}
+
+/* Button Styling */
+.booking-page form button {
+  padding: 12px;
+  font-size: 1rem;
+  background-color: #16a085;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.booking-page form button:hover {
+  background-color: #13806b; /* Darker blue */
+  transform: scale(1.02);
+}
+
+/* Summary Section */
+.booking-page > div {
+  text-align: center;
+  margin-top: 20px;
+  padding: 30px;
+}
+
+.booking-page > div p {
+  font-size: 1rem;
+  color: #4e6756;
+  margin-bottom: 10px;
+}
+
+.Summary {
+  text-align: left !important;
+}
+
+.Summary p {
+  margin-left: 30px;
+}
+
+/* Price Summary Styling */
+.booking-page > div h3 {
+  font-size: 1.5rem;
+  color: #0b2b26; /*test black*/ /* Dark navy blue */
+  margin-bottom: 20px;
+}
+
+/* Confirmation Section */
+.booking-page > div h2 {
+  font-size: 1.8rem;
+  color: #16a085; /* Light green */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.booking-page > div button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #16a085;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.booking-page > div button:hover {
+  background-color: #13806b;
+  transform: scale(1.02);
+}
+
+/* Confirmation Section Styling */
+.booking-page .confirmation-section {
+  background-color: #f9f9f9; /* Light background for contrast */
+  padding: 30px;
+  border: 1px solid #bdc3c7; /* Subtle border */
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin-top: 20px;
+}
+
+.booking-page .confirmation-section h2 {
+  font-size: 2rem;
+  color: #16a085; /* Light green to highlight success */
+  margin-bottom: 15px;
+}
+
+.booking-page .confirmation-section p {
+  font-size: 1.1rem;
+  color: #4e6756; /* Neutral text color */
+  margin-bottom: 15px;
+  line-height: 1.6; /* Better readability */
+}
+
+.booking-page .confirmation-section p.important {
+  font-weight: bold;
+  color: #0b2b26; /* Darker color for emphasis */
+}
+
+.booking-page .confirmation-section button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: #16a085;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.booking-page .confirmation-section button:hover {
+  background-color: #13806b; /* Darker green */
+  transform: scale(1.05); /* Slight scale for hover effect */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .booking-page {
+    padding: 20px;
+  }
+
+  .booking-page h2 {
+    font-size: 1.5rem;
+  }
+
+  .booking-page form button,
+  .booking-page > div button {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+/* Confirmation Modal */
+.confirmation-modal {
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+.confirmation-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+
+.confirm-button {
+  background-color: #e74c3c;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.cancel-button {
+  background-color: #95a5a6;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.confirm-button:hover {
+  background-color: #c0392b;
+}
+
+.cancel-button:hover {
+  background-color: #7f8c8d;
+}
+
+/* Success Modal */
+.success-modal {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+.ok-button {
+  background-color: #16a085;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.ok-button:hover {
+  background-color: #13806b;
+}
+
+/* Car Actions */
+.car-actions {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+/* Overlay for all modals */
+.reservation-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Common modal content styling */
+.reservation-modal-content,
+.confirmation-modal-content,
+.success-modal-content {
+  position: relative;
+  background-color: #ffffff; /* White background */
+  border-radius: 10px;
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+/* Confirmation modal-specific adjustments */
+.confirmation-modal-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+/* Success modal-specific adjustments */
+.success-modal-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+/* Buttons inside modals */
+.confirm-button,
+.cancel-button,
+.ok-button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.confirm-button {
+  background-color: #e74c3c;
+  color: #ffffff;
+}
+
+.cancel-button {
+  background-color: #95a5a6;
+  color: #ffffff;
+}
+
+.ok-button {
+  background-color: #16a085;
+  color: #ffffff;
+}
+
+/* Hover effects */
+.confirm-button:hover {
+  background-color: #c0392b;
+}
+
+.cancel-button:hover {
+  background-color: #7f8c8d;
+}
+
+.ok-button:hover {
+  background-color: #13806b;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+.about-us-page {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  color: #4e6756;
+}
+
+.about-us-page h1 {
+  font-size: 2rem;
+  color: #0b2b26;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.about-us-page h2 {
+  font-size: 1.5rem;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #0b2b26;
+}
+
+.about-us-page p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.about-us-page ul {
+  margin: 20px 0;
+  padding-left: 20px;
+}
+
+.about-us-page ul li {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #4e6756;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+.terms-and-conditions-page {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  color: #4e6756;
+}
+
+.terms-and-conditions-page h1 {
+  font-size: 2rem;
+  color: #0b2b26;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.terms-and-conditions-page h2 {
+  font-size: 1.5rem;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #0b2b26;
+}
+
+.terms-and-conditions-page p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.terms-and-conditions-page ul {
+  margin: 20px 0;
+  padding-left: 20px;
+}
+
+.terms-and-conditions-page ul li {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+.privacy-policy-page {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  color: #4e6756;
+}
+
+.privacy-policy-page h1 {
+  font-size: 2rem;
+  color: #0b2b26;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.privacy-policy-page h2 {
+  font-size: 1.5rem;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #0b2b26;
+}
+
+.privacy-policy-page p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.privacy-policy-page ul {
+  margin: 20px 0;
+  padding-left: 20px;
+}
+
+.privacy-policy-page ul li {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ---------------------------------------------------------------------------------------------------------------- */
+
+.contact-us-page {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.contact-us-page h1 {
+  font-size: 2rem;
+  color: #0b2b26;
+  margin-bottom: 20px;
+}
+
+.contact-us-page p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #4e6756;
+}
+
+.contact-us-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-us-page form label {
+  font-size: 1rem;
+  color: #4e6756;
+  text-align: left;
+}
+
+.contact-us-page form input,
+.contact-us-page form textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #bdc3c7;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.contact-us-page form input:focus,
+.contact-us-page form textarea:focus {
+  border-color: #16a085;
+  box-shadow: 0px 0px 6px rgba(52, 152, 219, 0.4);
+}
+
+.contact-us-page form button {
+  padding: 12px;
+  font-size: 1rem;
+  background-color: #16a085;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-us-page form button:hover {
+  background-color: #13806b;
+}
+
+.response-message {
+  font-size: 1rem;
+  color: #16a085;
+  margin-top: 20px;
+}
+
