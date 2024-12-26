@@ -2672,69 +2672,49 @@ button.slick-arrow.slick-prev{
 /* ---------------------------------------------------------------------------------------------------------------- */
 
 .contact-us-page {
-  max-width: 800px;
-  margin: 30px auto;
+  max-width: 1200px;
+  margin: 20px auto;
   padding: 30px;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  color: #4e6756;
 }
 
 .contact-us-page h1 {
   font-size: 2rem;
   color: #0b2b26;
   margin-bottom: 20px;
+  text-align: center;
+}
+
+.contact-us-page h2 {
+  font-size: 1.5rem;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #0b2b26;
 }
 
 .contact-us-page p {
   font-size: 1.2rem;
-  margin-bottom: 30px;
-  color: #4e6756;
+  line-height: 1.8;
+  margin-bottom: 20px;
 }
 
+.contact-us-page ul {
+  margin: 20px 0;
+  padding-left: 20px;
+  text-align: left; /* Align text to the left for better readability */
+}
+
+.contact-us-page ul li {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Optional: If you want to remove the form section, you can delete the following styles */
 .contact-us-page form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.contact-us-page form label {
-  font-size: 1rem;
-  color: #4e6756;
-  text-align: left;
-}
-
-.contact-us-page form input,
-.contact-us-page form textarea {
-  width: 100%;
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #bdc3c7;
-  border-radius: 5px;
-  outline: none;
-  transition: border-color 0.3s ease;
-}
-
-.contact-us-page form input:focus,
-.contact-us-page form textarea:focus {
-  border-color: #16a085;
-  box-shadow: 0px 0px 6px rgba(52, 152, 219, 0.4);
-}
-
-.contact-us-page form button {
-  padding: 12px;
-  font-size: 1rem;
-  background-color: #16a085;
-  color: #ffffff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.contact-us-page form button:hover {
-  background-color: #13806b;
+  display: none; /* Hide the form since we're not using it */
 }
 
 .response-message {

@@ -13,77 +13,68 @@ const BookCar = () => {
     carMake: '',
     category: '',
     priceRange: [0, 1000],
-    sortBy: ''
+    startDate: null,
+    endDate: null
   });
+  
   const [brands, setBrands] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCar, setSelectedCar] = useState(null); // To track the selected car for the modal
   const [isModalOpen, setIsModalOpen] = useState(false); // To manage modal visibility
-
   const [currentPage, setCurrentPage] = useState(1);
   const carsPerPage = 12;
-
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const fetchCars = async () => {
-  //     setLoading(true); // Ensure loading state is set to true during fetch
-  //     try {
-  //       const response = await axios.get('http://localhost:4000/api/cars/available', {
-  //         params: {
-  //           startDate: filters.startDate || null, // Pass startDate if available
-  //           endDate: filters.endDate || null,   // Pass endDate if available
-  //         },
-  //       });
-  
-  //       setCars(response.data);
-  //       setFilteredCars(response.data);
-  
-  //       const uniqueBrands = [...new Set(response.data.map(car => car.make))];
-  //       setBrands(uniqueBrands);
-  
-  //       const uniqueCategories = [...new Set(response.data.map(car => car.category))];
-  //       setCategories(uniqueCategories);
-  //     } catch (err) {
-  //       console.error('Error fetching cars:', err);
-  //     } finally {
-  //       setLoading(false); // Ensure loading is set to false after fetch
-  //     }
-  //   };
-  
-  //   fetchCars(); // Fetch cars regardless of the date filters
-  // }, [filters.startDate, filters.endDate]); // Re-run when rental dates change
   useEffect(() => {
     const fetchCars = async () => {
-      setLoading(true); // Ensure loading state is set to true during fetch
+      setLoading(true);
       try {
+        const { keyword, carMake, category, priceRange, startDate, endDate } = filters;
         const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/cars/available`, {
           params: {
-            startDate: filters.startDate || null, // Pass startDate if available
-            endDate: filters.endDate || null,   // Pass endDate if available
+            keyword: keyword || null,
+            carMake: carMake || null,
+            category: category || null,
+            minPrice: priceRange[0] || null,
+            maxPrice: priceRange[1] || null,
+            startDate: startDate ? startDate.toISOString() : null,
+            endDate: endDate ? endDate.toISOString() : null,
           },
         });
+        
+        setCars(response.data); // Keep all cars returned by the backend
+        setFilteredCars(response.data); // Apply initial filtering to show all cars
+
+      } catch (err) {
+        console.error('Error fetching cars:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
   
-        setCars(response.data);
-        setFilteredCars(response.data);
+    fetchCars();
+  }, [filters]); // Trigger when any filter changes
   
+  useEffect(() => {
+    const fetchMakesAndCategories = async () => {
+      try {
+        const response = await axios.get('/api/cars/b-and-c');
+
         const uniqueBrands = [...new Set(response.data.map(car => car.make))];
         setBrands(uniqueBrands);
   
         const uniqueCategories = [...new Set(response.data.map(car => car.category))];
         setCategories(uniqueCategories);
+
       } catch (err) {
-        console.error('Error fetching cars:', err);
-      } finally {
-        setLoading(false); // Ensure loading is set to false after fetch
+        console.error('Error fetching makes and categories:', err);
       }
     };
   
-    fetchCars(); // Fetch cars regardless of the date filters
-  }, [filters.startDate, filters.endDate]); // Re-run when rental dates change
+    fetchMakesAndCategories();
+  }, []);
   
   
-
   const handleSearch = (keyword) => {
     setFilters(prev => {
       const updatedFilters = { ...prev, keyword: keyword || '' };
@@ -91,49 +82,34 @@ const BookCar = () => {
       return updatedFilters;
     });
   };
-
-  // const handleFilterChange = (newFilters) => {
-  //   setFilters(prev => {
-  //     const updatedFilters = { ...prev, ...newFilters };
-  //     return updatedFilters; // Filters will include startDate and endDate
-  //   });
-  // };
-  const handleFilterChange = (newFilters) => {
-    setFilters((prev) => {
-      const updatedFilters = { ...prev, ...newFilters };
-      filterCars(updatedFilters); // Call filterCars with the updated filters
-      return updatedFilters;
-    });
-  };
+   
+  const filterCars = (updatedFilters) => {
+    const {
+      keyword,
+      carMake,
+      category,
+      priceRange,
+      startDate,
+      endDate,
+    } = { ...filters, ...updatedFilters }; // Merge existing filters with updates
   
-  
-
-  // const filterCars = async ({ keyword, carMake, category, priceRange }) => {
-  //   const filtered = cars.filter(car => {
-  //     const matchesKeyword = keyword
-  //       ? car.make.toLowerCase().includes(keyword.toLowerCase()) ||
-  //         car.model.toLowerCase().includes(keyword.toLowerCase())
-  //       : true;
-  //     const matchesMake = carMake ? car.make === carMake : true;
-  //     const matchesCategory = category ? car.category === category : true;
-  //     const matchesPrice = car.pricePerDay >= priceRange[0] && car.pricePerDay <= priceRange[1];
-  //     return matchesKeyword && matchesMake && matchesCategory && matchesPrice;
-  //   });
-
-  //   setFilteredCars(filtered);
-  //   setCurrentPage(1);
-  // };
-  const filterCars = ({ keyword, carMake, category, priceRange, startDate, endDate }) => {
     const filtered = cars.filter((car) => {
       const matchesKeyword = keyword
         ? car.make.toLowerCase().includes(keyword.toLowerCase()) ||
           car.model.toLowerCase().includes(keyword.toLowerCase())
         : true;
+  
       const matchesMake = carMake ? car.make === carMake : true;
       const matchesCategory = category ? car.category === category : true;
       const matchesPrice = car.pricePerDay >= priceRange[0] && car.pricePerDay <= priceRange[1];
-      const matchesStartDate = startDate ? new Date(car.availableFrom) <= new Date(startDate) : true;
-      const matchesEndDate = endDate ? new Date(car.availableTo) >= new Date(endDate) : true;
+  
+      const matchesStartDate = startDate
+        ? new Date(car.availableFrom) <= new Date(startDate)
+        : true;
+  
+      const matchesEndDate = endDate
+        ? new Date(car.availableTo) >= new Date(endDate)
+        : true;
   
       return (
         matchesKeyword &&
@@ -146,10 +122,20 @@ const BookCar = () => {
     });
   
     setFilteredCars(filtered);
-    setCurrentPage(1); // Reset to page 1 when filters change
+    setCurrentPage(1); // Reset pagination
   };
   
-
+  
+  const handleFilterChange = (newFilters) => {
+    setFilters((prev) => {
+      const updatedFilters = { ...prev, ...newFilters };
+      console.log('Filters Updated:', updatedFilters);
+      filterCars(updatedFilters); // Apply filters to the current list
+      return updatedFilters;
+    });
+  };
+  
+  
   const openModal = (car) => {
     setSelectedCar(car);
     setIsModalOpen(true);
@@ -190,7 +176,6 @@ const BookCar = () => {
         brands={brands}
         categories={categories}
       />
-
       <br /><br />
 
       <div className="car-listings">

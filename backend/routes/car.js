@@ -1,11 +1,14 @@
 const express = require('express');
-const { createCar, getAvailableCars, getCars, getCarById, updateCar, deleteCar, getUnavailableDates, checkCarReservations, updateCarAvailability } = require('../controllers/carController');
+const { createCar, getAvailableCars, getCars, getCarById, updateCar, deleteCar, 
+    getUnavailableDates, checkCarReservations, updateCarAvailability, getAvailableBandC } = require('../controllers/carController');
 const router = express.Router();
 
 // Route to create a new car
 router.post('/', createCar);
 
 router.get('/available', getAvailableCars);
+
+router.get('/b-and-c', getAvailableBandC);
 
 // Route to check if a car has reservations
 router.get('/:id/reservations', checkCarReservations);

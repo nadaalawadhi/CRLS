@@ -176,22 +176,68 @@ const updateCarAvailability = async (req, res) => {
   }
 };
 
-const getAvailableCars = async (req, res) => {
+const getAvailableBandC = async (req, res) => {
   try {
-    const { startDate, endDate } = req.query;
 
     const filter = { availability: true };
 
-    // Add date filter only if both dates are provided
+    const availableCars = await Car.find(filter);
+
+    res.status(200).json(availableCars);
+
+  } catch (error) {
+    console.error('Error in getAvailableCars:', error);
+    res.status(500).json({ message: 'Error fetching available cars', error });
+  }
+};
+
+const getAvailableCars = async (req, res) => {
+  try {
+    const { startDate, endDate, keyword, carMake, category, minPrice, maxPrice } = req.query;
+
+    const filter = { availability: true };
+
+    // Apply keyword filter
+    if (keyword) {
+      filter.$or = [
+        { make: { $regex: keyword, $options: 'i' } },
+        { model: { $regex: keyword, $options: 'i' } },
+      ];
+    }
+
+    // Apply car make filter
+    if (carMake) {
+      filter.make = carMake;
+    }
+
+    // Apply category filter
+    if (category) {
+      filter.category = category;
+    }
+
+    // Apply price range filter
+    // if (minPrice && maxPrice) {
+    //   filter.pricePerDay = { $gte: parseFloat(minPrice), $lte: parseFloat(maxPrice) };
+    // }
+    if (minPrice || maxPrice) {
+      filter.pricePerDay = {};
+      if (minPrice) {
+        filter.pricePerDay.$gte = parseFloat(minPrice);
+      }
+      if (maxPrice) {
+        filter.pricePerDay.$lte = parseFloat(maxPrice);
+      }
+    }
+    
+
+    // Apply date filter
     if (startDate && endDate) {
       const start = new Date(startDate);
       const end = new Date(endDate);
 
       const carsWithReservations = await Booking.find({
         status: { $ne: 'cancelled' },
-        $or: [
-          { startDate: { $lte: end }, endDate: { $gte: start } },
-        ],
+        $or: [{ startDate: { $lte: end }, endDate: { $gte: start } }],
       }).distinct('car');
 
       filter._id = { $nin: carsWithReservations }; // Exclude cars with conflicting reservations
@@ -206,6 +252,7 @@ const getAvailableCars = async (req, res) => {
 };
 
 
+
 module.exports = {
   createCar,
   getCars,
@@ -215,5 +262,6 @@ module.exports = {
   getUnavailableDates,
   checkCarReservations, 
   updateCarAvailability,
-  getAvailableCars
+  getAvailableCars,
+  getAvailableBandC
 };
