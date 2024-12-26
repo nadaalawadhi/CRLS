@@ -25,11 +25,39 @@ const BookCar = () => {
 
   const navigate = useNavigate();
 
+  // useEffect(() => {
+  //   const fetchCars = async () => {
+  //     setLoading(true); // Ensure loading state is set to true during fetch
+  //     try {
+  //       const response = await axios.get('http://localhost:4000/api/cars/available', {
+  //         params: {
+  //           startDate: filters.startDate || null, // Pass startDate if available
+  //           endDate: filters.endDate || null,   // Pass endDate if available
+  //         },
+  //       });
+  
+  //       setCars(response.data);
+  //       setFilteredCars(response.data);
+  
+  //       const uniqueBrands = [...new Set(response.data.map(car => car.make))];
+  //       setBrands(uniqueBrands);
+  
+  //       const uniqueCategories = [...new Set(response.data.map(car => car.category))];
+  //       setCategories(uniqueCategories);
+  //     } catch (err) {
+  //       console.error('Error fetching cars:', err);
+  //     } finally {
+  //       setLoading(false); // Ensure loading is set to false after fetch
+  //     }
+  //   };
+  
+  //   fetchCars(); // Fetch cars regardless of the date filters
+  // }, [filters.startDate, filters.endDate]); // Re-run when rental dates change
   useEffect(() => {
     const fetchCars = async () => {
       setLoading(true); // Ensure loading state is set to true during fetch
       try {
-        const response = await axios.get('http://localhost:4000/api/cars/available', {
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/api/cars/available`, {
           params: {
             startDate: filters.startDate || null, // Pass startDate if available
             endDate: filters.endDate || null,   // Pass endDate if available

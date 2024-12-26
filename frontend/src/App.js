@@ -81,7 +81,10 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<RegisterUser />} />
+
                 <Route path="/forgotPassword" element={<ForgotPassword />} />
+                <Route path="/reset-password/:resetToken" element={<ResetPassword />} />
+
 
                 <Route path="/about-us" element={<AboutUs />} />
                 <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
@@ -100,7 +103,6 @@ function App() {
                 <Route path='/MyReservations' element={<ProtectedRoute allowedRoles={['customer']}><MyReservations /></ProtectedRoute>} />
                 <Route path='/Profile' element={<ProtectedRoute allowedRoles={['customer']}><Profile /></ProtectedRoute>} />
                 <Route path="/changePassword" element={<ProtectedRoute allowedRoles={['customer']}><ChangePassword /></ProtectedRoute>} />
-                <Route path="/reset-password/:resetToken" element={<ProtectedRoute allowedRoles={['customer']}><ResetPassword /></ProtectedRoute>} />
 
                 {/* Unauthorized page */}
                 <Route path="/unauthorized" element={<Unauthorized />} />

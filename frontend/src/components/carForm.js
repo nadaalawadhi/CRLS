@@ -277,7 +277,7 @@ const CarForm = ({ carToEdit, onCarAdded, onCarUpdated }) => {
   return (
     <div className="car-form-container">
       <h2>{carToEdit ? 'Edit Car' : 'Add New Car'}</h2>
-      {error && <div className="error-message">{error}</div>}
+      {/* {error && <div className="error-message">{error}</div>} */}
       <form onSubmit={handleSubmit}>
 
         <div>
@@ -418,6 +418,7 @@ const CarForm = ({ carToEdit, onCarAdded, onCarUpdated }) => {
           {formData.imageUrl && <p>Click on the image to pick a color.</p>}
         </div> */}
         <canvas ref={canvasRef} style={{ display: 'none' }} />
+        {error && <div className="error-message">{error}</div>}
         <button type="submit" disabled={loading}>
           {loading ? 'Saving Car...' : carToEdit ? 'Save Changes' : 'Add Car'}
         </button>
