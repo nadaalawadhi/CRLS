@@ -15,6 +15,17 @@ const SearchBar = ({ onSearch, onFilterChange, brands, categories}) => {
     onSearch(e.target.value); // Call the search function
   };
   
+  // const handleFilterChange = (e) => {
+  //   const { name, value } = e.target;
+  //   if (name === 'category') {
+  //     setCategory(value);
+  //     onFilterChange({ category: value, priceRange, startDate, endDate });
+  //   } else if (name === 'startDate' || name === 'endDate') {
+  //     if (name === 'startDate') setStartDate(value);
+  //     if (name === 'endDate') setEndDate(value);
+  //     onFilterChange({ category, priceRange, startDate: value, endDate });
+  //   }
+  // };
   const handleFilterChange = (e) => {
     const { name, value } = e.target;
     if (name === 'category') {
@@ -24,29 +35,45 @@ const SearchBar = ({ onSearch, onFilterChange, brands, categories}) => {
       if (name === 'startDate') setStartDate(value);
       if (name === 'endDate') setEndDate(value);
       onFilterChange({ category, priceRange, startDate: value, endDate });
-    }
+      }
   };
+  
 
+  // const handlePriceChange = (event, newValue) => {
+  //   setPriceRange(newValue);
+  //   onFilterChange({ category, priceRange: newValue, startDate, endDate });
+  // };
   const handlePriceChange = (event, newValue) => {
     setPriceRange(newValue);
     onFilterChange({ category, priceRange: newValue, startDate, endDate });
   };
+  
 
   const handleBrandChange = (e) => {
     onFilterChange({ carMake: e.target.value });
   };
 
    // Handle DatePicker changes
-   const handleStartDateChange = (date) => {
+  //  const handleStartDateChange = (date) => {
+  //   setStartDate(date);
+  //   setEndDate(null); // Clear end date if the start date changes
+  //   onFilterChange({ category, priceRange, startDate: date, endDate });
+  // };
+
+  // const handleEndDateChange = (date) => {
+  //   setEndDate(date);
+  //   onFilterChange({ category, priceRange, startDate, endDate: date });
+  // };
+  const handleStartDateChange = (date) => {
     setStartDate(date);
-    setEndDate(null); // Clear end date if the start date changes
     onFilterChange({ category, priceRange, startDate: date, endDate });
   };
-
+  
   const handleEndDateChange = (date) => {
     setEndDate(date);
     onFilterChange({ category, priceRange, startDate, endDate: date });
   };
+  
 
   return (
     <div className="search-bar">

@@ -22,6 +22,13 @@ const CarPage = () => {
   const [isUnavailableModalOpen, setIsUnavailableModalOpen] = useState(false);
   const [carToMarkUnavailable, setCarToMarkUnavailable] = useState(null);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const carsPerPage = 12;  
+
+  const indexOfLastCar = currentPage * carsPerPage;
+  const indexOfFirstCar = indexOfLastCar - carsPerPage;
+  const currentCars = filteredCars.slice(indexOfFirstCar, indexOfLastCar);
+
   useEffect(() => {
     const fetchCars = async () => {
       try {
@@ -37,6 +44,15 @@ const CarPage = () => {
     
     fetchCars();
   }, []);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Adds a smooth scrolling effect
+    });
+  };
+  
 
   const filterCars = () => {
     let filtered = [...cars];
@@ -56,11 +72,13 @@ const CarPage = () => {
       filtered = filtered.filter((car) => car.availability === isAvailable);
     }
     setFilteredCars(filtered);
+    setCurrentPage(1); // Reset to page 1 when filters change
   };
-
+  
   useEffect(() => {
     filterCars();
   }, [searchKeyword, categoryFilter, availabilityFilter, cars]);
+  
 
   const handleCarDeleted = (carId) => {
     setCars((prevCars) => prevCars.filter((car) => car._id !== carId));
@@ -194,7 +212,7 @@ const CarPage = () => {
 
       {/* Car Listings */}
       <div className="cars">
-        {filteredCars.map((car) => (
+        {currentCars.map((car) => (
           <div
             key={car._id}
             className="car-details-container"
@@ -239,6 +257,17 @@ const CarPage = () => {
               </span>
             </div>
           </div>
+        ))}
+      </div>
+      <div className="pagination">
+        {Array.from({ length: Math.ceil(filteredCars.length / carsPerPage) }, (_, index) => (
+          <button
+            key={index + 1}
+            onClick={() => paginate(index + 1)}
+            className={currentPage === index + 1 ? "active" : ""}
+          >
+            {index + 1}
+          </button>
         ))}
       </div>
 
