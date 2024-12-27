@@ -71,16 +71,16 @@ const ReservationModal = ({ reservation, onClose, onCancel }) => {
               <div className="details-section payment-info">
                 <h4>Payment Details</h4>
                 <p>
-                  <strong>Base Rental Fee:</strong> ${baseRentalFee.toFixed(2)}
+                  <strong>Base Rental Fee:</strong> {baseRentalFee.toFixed(2)} BHD
                 </p>
                 <p>
-                  <strong>VAT Price:</strong> ${vatPrice.toFixed(2)}
+                  <strong>VAT Price:</strong> {vatPrice.toFixed(2)} BHD
                 </p>
                 <p>
-                  <strong>Insurance Fee:</strong> ${insurancePrice.toFixed(2)}
+                  <strong>Insurance Fee:</strong> {insurancePrice.toFixed(2)} BHD
                 </p>
                 <p>
-                  <strong>Total Price:</strong> ${totalPrice.toFixed(2)}
+                  <strong>Total Price:</strong> {totalPrice.toFixed(2)} BHD
                 </p>
               </div>
             </div>

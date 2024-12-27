@@ -200,14 +200,14 @@ const CarForm = ({ carToEdit, onCarAdded, onCarUpdated }) => {
   
     // Validations
     // Make Validation
-    if (!/^[a-zA-Z]{2,50}$/.test(formData.make)) {
+    if (!/^[a-zA-Z0-9\s]{2,50}$/.test(formData.make)) {
       setError("Car make must be 2-50 alphabetic characters.");
       setLoading(false);
       return;
     }
 
     // Updated Model Validation
-    if (!/^[a-zA-Z0-9\s\-]{2,50}$/.test(formData.model)) {
+    if (!/^[a-zA-Z0-9\s]{2,50}$/.test(formData.model)) {
       setError("Car model must be 2-50 characters and can include letters, numbers, spaces, and hyphens.");
       setLoading(false);
       return;

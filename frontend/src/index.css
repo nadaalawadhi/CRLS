@@ -220,8 +220,10 @@ footer div p {
 
 /* Car Image Styling */
 .car-image {
-  width: 100%;
+  /* width: 100%; */
   /* max-width: 250px; */
+  width: 283.4px !important;
+  height: 226.712px !important;
   height: auto;
   border-radius: 5px 5px 0px 0px;
   margin-bottom: 15px;
